@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 
 class Card extends Component {
     render(){
-        let style;
-        if(this.props.isLiked){
-            style = { color: 'chartreuse'};
-        } else {
-            style = {color: 'tomato'};
+        // using the term ternary operator
+        const style = {
+            color: this.props.isLiked ? 'chartreuse' : 'tomato',
         }
+        const classes = this.props.isLiked ? 'fa fa-heart' : 'fa fa-heart-o';
+        
         return (
           <div className='col-md-3'>
              <img src={this.props.src} alt=""/>
              <p>{this.props.caption}</p>
-             <i className="fa fa-heart" style={style} aria-hidden="true"></i>
+             <i className= {classes} style={style} aria-hidden="true"></i>
 
           </div>
 
@@ -20,5 +20,6 @@ class Card extends Component {
 
     }
 }
+
 
 export default Card;

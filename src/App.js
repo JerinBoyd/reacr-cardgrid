@@ -47,12 +47,28 @@ class App extends Component {
           isLiked: false 
         },
       ]
-
     }
-  }
+      this.handleLike =  this.handleLike.bind(this);
+    }
+    handleLike(position){
+      const clickedCard = this.state.cards[position];
+      const first = this.state.cards.slice(0, position);
+      const last = this.state.cards.slice(position + 1);
+      const newCards = [
+        ...first,
+        {...clickedCard, isLiked: !clickedCard.isLiked},
+        ...last
+      ];
+      this.setState({'cards': newCards});
+    }
+  
   render() {
     const { cards } = this.state;
-    const  CardGrid = cards.map((card, index) => <Card key={index} src={card.src} caption={card.caption} isLiked={card.isLiked}/>) 
+    const  CardGrid = cards.map((card, index) => <Card key={index} 
+                                                       src={card.src} 
+                                                       caption={card.caption} 
+                                                       isLiked={card.isLiked}
+                                                       onLike={() => this.handleLike(index)}/>) 
     return (
     <div className="container">
          <h1>CardGrid</h1>

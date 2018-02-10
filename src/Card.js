@@ -12,7 +12,9 @@ class Card extends Component {
           <div className='col-md-3'>
              <img src={this.props.src} alt=""/>
              <p>{this.props.caption}</p>
-             <i className= {classes} style={style} aria-hidden="true"></i>
+             <i onClick={this.props.onLike}
+                className= {classes} style={style} 
+                aria-hidden="true"></i>
 
           </div>
 
